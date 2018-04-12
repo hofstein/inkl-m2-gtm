@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Inkl\GoogleTagManager\Block\Tag" name="googletagmanager.tag" ifconfig="inkl_googletagmanager/general/enabled" />
+        </referenceBlock>
+
+        <referenceBlock name="before.body.end">
+            <block class="Inkl\GoogleTagManager\Block\Js" name="googletagmanager.datalayer.customer_email" ifconfig="inkl_googletagmanager/datalayer_customer/email">
+                <arguments>
+                    <argument name="js_file" xsi:type="string">customer_email</argument>
+                </arguments>
+            </block>
+
+            <block class="Inkl\GoogleTagManager\Block\Js" name="googletagmanager.datalayer.customer_emailsha1" ifconfig="inkl_googletagmanager/datalayer_customer/email_sha1">
+                <arguments>
+                    <argument name="js_file" xsi:type="string">customer_emailSha1</argument>
+                </arguments>
+            </block>
+
+            <block class="Inkl\GoogleTagManager\Block\Js" name="googletagmanager.datalayer.event_addtocart" ifconfig="inkl_googletagmanager/datalayer_event/addtocart">
+                <arguments>
+                    <argument name="js_file" xsi:type="string">event_addToCart</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
