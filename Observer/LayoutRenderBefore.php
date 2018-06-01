@@ -23,7 +23,7 @@ use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\ObjectManagerInterface;
 
-class ControllerActionPostdispatch implements ObserverInterface
+class LayoutRenderBefore implements ObserverInterface
 {
     /** @var ObjectManagerInterface */
     private $objectManager;
