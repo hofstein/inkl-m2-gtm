@@ -43,14 +43,13 @@ class SearchProducts
             return;
         }
 
-        $searchProducts = $this->getsearchProducts();
+        $searchProducts = $this->getSearchProducts();
 
         $this->googleTagManager->addDataLayerVariable('searchProducts', $searchProducts);
     }
 
     private function getSearchProducts()
     {
-
         $searchProductListBlock = $this->layout->getBlock('search_result_list');
         if (!$searchProductListBlock) return [];
 
@@ -60,7 +59,7 @@ class SearchProducts
             $searchProducts[] = [
                 'id' => $product->getSku(),
                 'name' => $product->getName(),
-                'price' => round($product->getFinalPrice(), 2),
+                'price' => round($product->getPriceInfo()->getPrice(\Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE)->getAmount()->getBaseAmount(), 2),
             ];
         }
 

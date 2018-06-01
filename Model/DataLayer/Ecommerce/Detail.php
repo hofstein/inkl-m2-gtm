@@ -54,7 +54,7 @@ class Detail
                 'products' => [[
                     'id' => $product->getSku(),
                     'name' => $product->getName(),
-                    'price' => round($product->getFinalPrice(), 2),
+                    'price' => round($product->getPriceInfo()->getPrice(\Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE)->getAmount()->getBaseAmount(), 2),
                 ]]
             ]
         ];

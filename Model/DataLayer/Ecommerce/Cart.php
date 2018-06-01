@@ -148,7 +148,7 @@ class Cart
             $cartProductData = [
                 'id' => $quoteItem->getSku(),
                 'name' => $quoteItem->getName(),
-                'price' => round($quoteItem->getPriceInclTax(), 2),
+                'price' => round($quoteItem->getPrice(), 2),
                 'quantity' => 0
             ];
 

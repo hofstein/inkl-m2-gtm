@@ -59,7 +59,7 @@ class CartProducts
             $cartProductData = [
                 'id' => $sku,
                 'name' => $quoteItem->getName(),
-                'price' => round($quoteItem->getPriceInclTax(), 2),
+                'price' => round($quoteItem->getPrice(), 2),
                 'quantity' => 0
             ];
 
