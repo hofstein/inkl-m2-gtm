@@ -4,7 +4,7 @@ namespace Inkl\GoogleTagManager\Model\DataLayer\General;
 
 use Inkl\GoogleTagManager\Helper\Config\DataLayerGeneralConfig;
 use Inkl\GoogleTagManagerLib\GoogleTagManager;
-use Magento\Braintree\Model\LocaleResolver;
+use Magento\Framework\Locale\ResolverInterface;
 
 class LocaleCode
 {
@@ -12,23 +12,23 @@ class LocaleCode
     private $googleTagManager;
     /** @var DataLayerGeneralConfig */
     private $dataLayerGeneralConfig;
-    /** @var LocaleResolver */
-    private $localeResolver;
+    /** @var ResolverInterface */
+    private $resolver;
 
     /**
      * @param GoogleTagManager $googleTagManager
      * @param DataLayerGeneralConfig $dataLayerGeneralConfig
-     * @param LocaleResolver $localeResolver
+     * @param ResolverInterface $resolver
      */
     public function __construct(GoogleTagManager $googleTagManager,
                                 DataLayerGeneralConfig $dataLayerGeneralConfig,
-                                LocaleResolver $localeResolver
+                                ResolverInterface $resolver
     )
     {
 
         $this->googleTagManager = $googleTagManager;
         $this->dataLayerGeneralConfig = $dataLayerGeneralConfig;
-        $this->localeResolver = $localeResolver;
+        $this->resolver = $resolver;
     }
 
     public function handle()
@@ -38,7 +38,7 @@ class LocaleCode
             return;
         }
 
-        $this->googleTagManager->addDataLayerVariable('localeCode', $this->localeResolver->getLocale());
+        $this->googleTagManager->addDataLayerVariable('localeCode', $this->resolver->getLocale());
     }
 
     private function isEnabled()
