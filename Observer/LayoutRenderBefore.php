@@ -7,6 +7,7 @@ use Inkl\GoogleTagManager\Model\DataLayer\Catalog\CartProducts;
 use Inkl\GoogleTagManager\Model\DataLayer\Catalog\CategoryName;
 use Inkl\GoogleTagManager\Model\DataLayer\Catalog\CategoryProducts;
 use Inkl\GoogleTagManager\Model\DataLayer\Catalog\SearchKeyword;
+use Inkl\GoogleTagManager\Model\DataLayer\Catalog\SearchNumResults;
 use Inkl\GoogleTagManager\Model\DataLayer\Catalog\SearchProducts;
 use Inkl\GoogleTagManager\Model\DataLayer\Customer\Email;
 use Inkl\GoogleTagManager\Model\DataLayer\Customer\EmailSha1;
@@ -68,6 +69,7 @@ class LayoutRenderBefore implements ObserverInterface
 
         $this->objectManager->get(SearchKeyword::class)->handle();
         $this->objectManager->get(SearchProducts::class)->handle();
+        $this->objectManager->get(SearchNumResults::class)->handle();
 
         $this->objectManager->get(CartProducts::class)->handle();
 

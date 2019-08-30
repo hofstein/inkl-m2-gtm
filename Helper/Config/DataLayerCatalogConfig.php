@@ -12,6 +12,7 @@ class DataLayerCatalogConfig extends AbstractHelper
 
     const XML_PATH_SEARCH_KEYWORD = 'inkl_googletagmanager/datalayer_catalog/search_keyword';
     const XML_PATH_SEARCH_PRODUCTS = 'inkl_googletagmanager/datalayer_catalog/search_products';
+    const XML_PATH_SEARCH_NUM_RESULTS = 'inkl_googletagmanager/datalayer_catalog/search_num_results';
 
     const XML_PATH_CART_PRODUCTS = 'inkl_googletagmanager/datalayer_catalog/cart_products';
 
@@ -33,6 +34,11 @@ class DataLayerCatalogConfig extends AbstractHelper
     public function isSearchProductsEnabled($storeId = null)
     {
         return $this->scopeConfig->isSetFlag(self::XML_PATH_SEARCH_PRODUCTS, ScopeInterface::SCOPE_STORE, $storeId);
+    }
+
+    public function isSearchNumResultsEnabled($storeId = null)
+    {
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_SEARCH_NUM_RESULTS, ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     public function isCartProductsEnabled($storeId = null)

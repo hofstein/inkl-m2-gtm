@@ -61,6 +61,11 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
 
+                <field id="search_num_results" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Search Num Results</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
                 <field id="cart_products" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Cart Products</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
