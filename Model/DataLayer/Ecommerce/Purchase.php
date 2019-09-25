@@ -74,7 +74,8 @@ class Purchase
             'revenue' => round($order->getSubtotal(), 2),
             'tax' => round($order->getTaxAmount(), 2),
             'shipping' => round($order->getShippingAmount(), 2),
-            'coupon' => (string)$order->getCouponCode()
+            'coupon' => (string)$order->getCouponCode(),
+	        'email' => $order->getCustomerEmail()
         ];
     }
 
