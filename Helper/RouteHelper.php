@@ -67,4 +67,9 @@ class RouteHelper
         return ($this->getPath() === 'checkout/onepage/success');
     }
 
+    public function isNotFound()
+    {
+        return ($this->getPath() === 'cms/index/noRoute');
+    }
+
 }

@@ -51,6 +51,7 @@ class PageType
         if ($this->routeHelper->isProduct()) return 'product';
         if ($this->routeHelper->isCart()) return 'cart';
         if ($this->routeHelper->isPurchase()) return 'purchase';
+        if ($this->routeHelper->isNotFound()) return 'notfound';
 
         return 'other';
     }
