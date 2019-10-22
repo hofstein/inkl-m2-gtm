@@ -41,6 +41,11 @@
             <group id="datalayer_catalog" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Data Layer - Catalog</label>
 
+                <field id="category_id" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Category ID</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
                 <field id="category_name" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Category Name</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>

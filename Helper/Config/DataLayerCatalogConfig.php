@@ -7,6 +7,7 @@ use Magento\Store\Model\ScopeInterface;
 
 class DataLayerCatalogConfig extends AbstractHelper
 {
+    const XML_PATH_CATEGORY_ID = 'inkl_googletagmanager/datalayer_catalog/category_id';
     const XML_PATH_CATEGORY_NAME = 'inkl_googletagmanager/datalayer_catalog/category_name';
     const XML_PATH_CATEGORY_PRODUCTS = 'inkl_googletagmanager/datalayer_catalog/category_products';
 
@@ -15,6 +16,11 @@ class DataLayerCatalogConfig extends AbstractHelper
     const XML_PATH_SEARCH_NUM_RESULTS = 'inkl_googletagmanager/datalayer_catalog/search_num_results';
 
     const XML_PATH_CART_PRODUCTS = 'inkl_googletagmanager/datalayer_catalog/cart_products';
+
+    public function isCategoryIdEnabled($storeId = null)
+    {
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_CATEGORY_ID, ScopeInterface::SCOPE_STORE, $storeId);
+    }
 
     public function isCategoryNameEnabled($storeId = null)
     {

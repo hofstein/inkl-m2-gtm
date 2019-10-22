@@ -4,6 +4,7 @@ namespace Inkl\GoogleTagManager\Observer;
 
 use Inkl\GoogleTagManager\Helper\Config\GeneralConfig;
 use Inkl\GoogleTagManager\Model\DataLayer\Catalog\CartProducts;
+use Inkl\GoogleTagManager\Model\DataLayer\Catalog\CategoryId;
 use Inkl\GoogleTagManager\Model\DataLayer\Catalog\CategoryName;
 use Inkl\GoogleTagManager\Model\DataLayer\Catalog\CategoryProducts;
 use Inkl\GoogleTagManager\Model\DataLayer\Catalog\SearchKeyword;
@@ -64,6 +65,7 @@ class LayoutRenderBefore implements ObserverInterface
         $this->objectManager->get(LocaleCode::class)->handle();
         $this->objectManager->get(CurrencyCode::class)->handle();
 
+        $this->objectManager->get(CategoryId::class)->handle();
         $this->objectManager->get(CategoryName::class)->handle();
         $this->objectManager->get(CategoryProducts::class)->handle();
 
