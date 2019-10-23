@@ -46,7 +46,7 @@ class CategoryId
         $this->googleTagManager->addDataLayerVariable('categoryId', $this->getCategoryId());
     }
 
-    private function getCategoryName()
+    private function getCategoryId()
     {
         /** @var CategoryInterface $category */
         $category = $this->registry->registry('current_category');
