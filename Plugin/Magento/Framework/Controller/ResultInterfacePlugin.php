@@ -1,7 +1,9 @@
 <?php
 
-namespace Inkl\GoogleTagManager\Observer;
+namespace Inkl\GoogleTagManager\Plugin\Magento\Framework\Controller;
 
+use Magento\Framework\App\Response\Http as ResponseHttp;
+use Magento\Framework\Controller\ResultInterface;
 use Inkl\GoogleTagManager\Helper\Config\GeneralConfig;
 use Inkl\GoogleTagManager\Model\DataLayer\Catalog\CartProducts;
 use Inkl\GoogleTagManager\Model\DataLayer\Catalog\CategoryId;
@@ -27,7 +29,7 @@ use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\ObjectManagerInterface;
 
-class ControllerFrontSendResponseBefore implements ObserverInterface
+class ResultInterfacePlugin
 {
 	/** @var ObjectManagerInterface */
 	private $objectManager;
@@ -54,17 +56,13 @@ class ControllerFrontSendResponseBefore implements ObserverInterface
 		$this->googleTagManager = $googleTagManager;
 	}
 
-	/**
-	 * @param Observer $observer
-	 * @return void
-	 * @throws \Magento\Framework\Exception\LocalizedException
-	 */
-	public function execute(Observer $observer)
+	public function aroundRenderResult(ResultInterface $subject, \Closure $proceed, ResponseHttp $response)
 	{
-		$request = $observer->getRequest();
-		if (!$this->isEnabled() || $request->isPost())
+		$result = $proceed($response);
+
+		if (!$this->isEnabled())
 		{
-			return;
+			return $result;
 		}
 
 		$this->objectManager->get(PageType::class)->handle();
@@ -90,10 +88,10 @@ class ControllerFrontSendResponseBefore implements ObserverInterface
 		$this->objectManager->get(Email::class)->handle();
 		$this->objectManager->get(EmailSha1::class)->handle();
 
-		$response = $observer->getResponse();
-
 		$dataLayerHtml = $this->googleTagManager->renderTag(new ContainerId($this->generalConfig->getContainerId()));
 		$response->setContent(str_replace('<!-- GTM_PLACEHOLDER -->', $dataLayerHtml, $response->getContent()));
+
+		return $result;
 	}
 
 	/**
