@@ -69,7 +69,8 @@ class RouteHelper
 
     public function isNotFound()
     {
-        return ($this->getPath() === 'cms/index/noRoute');
+        return $this->getPath() === 'cms/index/noRoute'
+            || $this->getPath() === 'cms/noroute/index';
     }
 
 }
