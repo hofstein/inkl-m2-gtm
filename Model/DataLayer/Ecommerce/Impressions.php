@@ -66,14 +66,14 @@ class Impressions
 			}
 		}
 
-		if (count($impressionProducts) === 0)
-		{
-			return;
-		}
-
 		if ($this->routeHelper->isSearch())
 		{
 			$impressionProducts = $this->getImpressionProducts('search_result_list', 'Search Results');
+		}
+
+		if (count($impressionProducts) === 0)
+		{
+			return;
 		}
 
 		$ecommerce = [
