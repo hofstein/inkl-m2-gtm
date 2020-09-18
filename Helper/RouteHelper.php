@@ -58,8 +58,7 @@ class RouteHelper
 
     public function isCheckout()
     {
-        return $this->getPath() === 'checkout/onepage/index'
-            || $this->getPath() === 'onestepcheckout/index/index';
+        return $this->getPath() === 'checkout/index/index';
     }
 
     public function isPurchase()

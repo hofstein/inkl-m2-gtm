@@ -2,6 +2,8 @@
 
 namespace Inkl\GoogleTagManager\Plugin\Magento\Framework\Controller;
 
+use Inkl\GoogleTagManager\Model\DataLayer\Ecommerce\Checkout;
+use Inkl\GoogleTagManager\Model\DataLayer\Ecommerce\Impressions;
 use Magento\Framework\App\Response\Http as ResponseHttp;
 use Magento\Framework\Controller\ResultInterface;
 use Inkl\GoogleTagManager\Helper\Config\GeneralConfig;
@@ -81,8 +83,10 @@ class ResultInterfacePlugin
 
 		$this->objectManager->get(CartProducts::class)->handle();
 
+		$this->objectManager->get(Impressions::class)->handle();
 		$this->objectManager->get(Detail::class)->handle();
 		$this->objectManager->get(Cart::class)->handle();
+		$this->objectManager->get(Checkout::class)->handle();
 		$this->objectManager->get(Purchase::class)->handle();
 
 		$this->objectManager->get(Email::class)->handle();

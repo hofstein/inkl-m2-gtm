@@ -7,9 +7,15 @@ use Magento\Store\Model\ScopeInterface;
 
 class DataLayerEcommerceConfig extends AbstractHelper
 {
+    const XML_PATH_IMPRESSIONS = 'inkl_googletagmanager/datalayer_ecommerce/impressions';
     const XML_PATH_DETAIL = 'inkl_googletagmanager/datalayer_ecommerce/detail';
     const XML_PATH_CART = 'inkl_googletagmanager/datalayer_ecommerce/cart';
     const XML_PATH_PURCHASE = 'inkl_googletagmanager/datalayer_ecommerce/purchase';
+
+    public function isImpressionsEnabled($storeId = null)
+    {
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_IMPRESSIONS, ScopeInterface::SCOPE_STORE, $storeId);
+    }
 
     public function isDetailEnabled($storeId = null)
     {

@@ -23,6 +23,12 @@
                     <argument name="js_file" xsi:type="string">event_addToCart</argument>
                 </arguments>
             </block>
+
+            <block class="Inkl\GoogleTagManager\Block\Js" name="googletagmanager.datalayer.event_product_clicks" ifconfig="inkl_googletagmanager/datalayer_event/product_clicks">
+                <arguments>
+                    <argument name="js_file" xsi:type="string">event_productClicks</argument>
+                </arguments>
+            </block>
         </referenceBlock>
     </body>
 </page>
