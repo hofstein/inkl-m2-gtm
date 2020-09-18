@@ -6,11 +6,15 @@ define(['jquery'], function ($) {
         bindEvents: function () {
             var self = this;
 
-            $('.toolbar').nextAll('.product-list').children('li').each(function (index, element) {
-                $(element).click({
-                    'index': index,
-                    'url': $(element).find('a:not([href*=#])').attr('href')
-                }, self.onClick);
+            $('.toolbar').nextAll('.product-list').find('a').each(function (index, element) {
+                var $element = $(element);
+                if (!$element.attr('href').match(/#/))
+                {
+                    $element.click({
+                        'index': index,
+                        'url': $element.attr('href')
+                    }, self.onClick);
+                }
             });
         },
 
