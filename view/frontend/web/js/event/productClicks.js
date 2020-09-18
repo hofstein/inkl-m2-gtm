@@ -39,7 +39,8 @@ define(['jquery'], function ($) {
                 },
                 'eventCallback': function () {
                     location.href = url;
-                }
+                },
+                'eventTimeout': 500
             };
 
             window.dataLayer.push(dataLayerData);
