@@ -6,29 +6,43 @@ define(['jquery'], function ($) {
         bindEvents: function () {
             var self = this;
 
-            $('.toolbar').nextAll('.product-list').find('a').each(function (index, element) {
+            $('.toolbar:last-child').prevAll('.product-list').find('a:not([href*="#"])').each(function (index, element) {
                 var $element = $(element);
-                if (!$element.attr('href').match(/#/))
-                {
-                    $element.click({
-                        'index': index,
-                        'url': $element.attr('href')
-                    }, self.onClick);
-                }
+                var clickData = {
+                    'index': index,
+                    'url': $element.attr('href')
+                };
+
+                $element.click(clickData, self.onClick);
+                $element.parents('li').find('.product-list-click').each(function (index, element) {
+                    var $element = $(element);
+                    clickData.origHandler = $(this).prop('onclick');
+
+                    $element.removeProp('onclick');
+                    $element.click(clickData, self.onClick);
+                });
             });
         },
 
         onClick: function (e) {
-
             try {
-                var impressionProducts = productClickHandler.getImpressionProducts();
-                var productData = impressionProducts[e.data.index];
+                if (typeof window.google_tag_manager !== 'undefined') {
+                    var impressionProducts = productClickHandler.getImpressionProducts();
+                    var productData = impressionProducts[e.data.index];
 
-                productClickHandler.sendGtmEvent(productData, e.data.url);
+                    productClickHandler.sendGtmEvent(productData, e.data.url);
 
-                e.preventDefault();
-                return false;
+                    e.stopPropagation();
+                    e.preventDefault();
+                    return false;
+                }
             } catch (exception) {
+                console.log(exception);
+            }
+
+            if (e.data.hasOwnProperty('origHandler'))
+            {
+                e.data.origHandler();
             }
         },
 
@@ -42,7 +56,8 @@ define(['jquery'], function ($) {
                     }
                 },
                 'eventCallback': function () {
-                    location.href = url;
+                    // location.href = url;
+                    console.log('redirect');
                 },
                 'eventTimeout': 500
             };
