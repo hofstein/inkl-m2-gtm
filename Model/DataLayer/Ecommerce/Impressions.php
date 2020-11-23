@@ -100,6 +100,7 @@ class Impressions
 		{
 			$impressionProducts[] = [
 				'id' => $product->getSku(),
+				'price' => $this->priceHelper->getPriceExclTax($product),
 				'category' => $categoryName,
 				'list' => $list,
 				'position' => ++$pos
