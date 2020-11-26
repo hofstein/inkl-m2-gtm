@@ -56,8 +56,7 @@ define(['jquery'], function ($) {
                     }
                 },
                 'eventCallback': function () {
-                    // location.href = url;
-                    console.log('redirect');
+                    location.href = url;
                 },
                 'eventTimeout': 500
             };
