@@ -6,7 +6,7 @@ use Inkl\GoogleTagManager\Helper\Config\DataLayerCustomerConfig;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Stdlib\CookieManagerInterface;
 
-class EmailSha1
+class EmailSha256
 {
     /** @var DataLayerCustomerConfig */
     private $dataLayerCustomerConfig;
@@ -36,17 +36,17 @@ class EmailSha1
             return;
         }
 
-        $customerEmailSha1 = '';
+        $customerEmailSha256 = '';
         if ($this->customerSession->isLoggedIn())
         {
-            $customerEmailSha1 = sha1(strtolower($this->customerSession->getCustomer()->getEmail()));
+            $customerEmailSha256 = hash("sha256", strtolower($this->customerSession->getCustomer()->getEmail()));
         }
 
-        $this->cookieManager->setPublicCookie('dataLayerCustomerEmailSha1', $customerEmailSha1);
+        $this->cookieManager->setPublicCookie('dataLayerCustomerEmailSha256', $customerEmailSha256);
     }
 
     private function isEnabled()
     {
-        return $this->dataLayerCustomerConfig->isEmailSha1Enabled();
+        return $this->dataLayerCustomerConfig->isEmailSha256Enabled();
     }
 }

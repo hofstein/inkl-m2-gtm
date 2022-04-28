@@ -9,6 +9,7 @@ class DataLayerCustomerConfig extends AbstractHelper
 {
     const XML_PATH_EMAIL = 'inkl_googletagmanager/datalayer_customer/email';
     const XML_PATH_EMAIL_SHA1 = 'inkl_googletagmanager/datalayer_customer/email_sha1';
+    const XML_PATH_EMAIL_SHA256 = 'inkl_googletagmanager/datalayer_customer/email_sha256';
 
     public function isEmailEnabled($storeId = null)
     {
@@ -18,6 +19,11 @@ class DataLayerCustomerConfig extends AbstractHelper
     public function isEmailSha1Enabled($storeId = null)
     {
         return $this->scopeConfig->isSetFlag(self::XML_PATH_EMAIL_SHA1, ScopeInterface::SCOPE_STORE, $storeId);
+    }
+
+    public function isEmailSha256Enabled($storeId = null)
+    {
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_EMAIL_SHA256, ScopeInterface::SCOPE_STORE, $storeId);
     }
 
 }
