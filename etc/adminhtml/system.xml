@@ -113,6 +113,11 @@
                     <label>E-Mail (SHA1)</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+
+                <field id="email_sha256" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>E-Mail (SHA256)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
             </group>
 
             <group id="datalayer_event" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">

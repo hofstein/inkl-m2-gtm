@@ -16,6 +16,7 @@ use Inkl\GoogleTagManager\Model\DataLayer\Catalog\SearchNumResults;
 use Inkl\GoogleTagManager\Model\DataLayer\Catalog\SearchProducts;
 use Inkl\GoogleTagManager\Model\DataLayer\Customer\Email;
 use Inkl\GoogleTagManager\Model\DataLayer\Customer\EmailSha1;
+use Inkl\GoogleTagManager\Model\DataLayer\Customer\EmailSha256;
 use Inkl\GoogleTagManager\Model\DataLayer\Ecommerce\Cart;
 use Inkl\GoogleTagManager\Model\DataLayer\Ecommerce\Detail;
 use Inkl\GoogleTagManager\Model\DataLayer\Ecommerce\Purchase;
@@ -91,6 +92,7 @@ class ResultInterfacePlugin
 
 		$this->objectManager->get(Email::class)->handle();
 		$this->objectManager->get(EmailSha1::class)->handle();
+		$this->objectManager->get(EmailSha256::class)->handle();
 
 		$dataLayerHtml = $this->googleTagManager->renderTag(new ContainerId($this->generalConfig->getContainerId()));
 		$response->setContent(str_replace('<!-- GTM_PLACEHOLDER -->', $dataLayerHtml, $response->getContent()));
