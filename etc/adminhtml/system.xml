@@ -114,7 +114,7 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
 
-                <field id="email_sha256" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="email_sha256" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>E-Mail (SHA256)</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
